@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "WebFetch(domain:jordandesigns.github.io)",
+      "Bash(find . -name \"*.html\" -exec sed -i 's|Professional painting services in Yarmouth, Nova Scotia and across the South Shore since 1995.|Professional painting services in Yarmouth, Nova Scotia and across the South Shore. Over 30 years of combined experience.|g' {} +)",
+      "Bash(find . -name \"*.html\" -exec sed -i 's|dutchpaintingservices\\\\.ca|dutchpaintingservices.com|g' {} +)"
     ]
   }
 }

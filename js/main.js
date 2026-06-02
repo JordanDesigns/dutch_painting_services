@@ -222,4 +222,107 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  /* ----- Project Modal / Lightbox (Desktop Only) ----- */
+  var modal = document.getElementById('projectModal');
+
+  if (modal && window.innerWidth > 768) {
+    var modalOverlay = modal.querySelector('.project-modal-overlay');
+    var modalClose = modal.querySelector('.modal-close');
+    var modalImageArea = modal.querySelector('.modal-image-area');
+    var modalTitle = modal.querySelector('.modal-info h3');
+    var modalDesc = modal.querySelector('.modal-info .modal-desc');
+    var modalLocation = modal.querySelector('.modal-info .modal-location');
+    var modalTags = modal.querySelector('.modal-info .project-tags');
+
+    function openModal(data) {
+      if (window.innerWidth <= 768) return;
+
+      modalTitle.textContent = data.title || '';
+      modalDesc.textContent = data.description || '';
+
+      if (data.location) {
+        modalLocation.textContent = data.location;
+        modalLocation.style.display = 'block';
+      } else {
+        modalLocation.style.display = 'none';
+      }
+
+      if (data.tags && data.tags.length > 0) {
+        modalTags.innerHTML = '';
+        data.tags.forEach(function (tag) {
+          var span = document.createElement('span');
+          span.className = 'project-tag';
+          span.textContent = tag;
+          modalTags.appendChild(span);
+        });
+        modalTags.style.display = 'flex';
+      } else {
+        modalTags.style.display = 'none';
+      }
+
+      if (data.type === 'before-after') {
+        modalImageArea.innerHTML = '<div class="modal-ba-images">' +
+          '<div class="ba-image before"><span class="ba-label">Before</span>' +
+          '<span class="gallery-placeholder">Before Photo</span></div>' +
+          '<div class="ba-image after"><span class="ba-label">After</span>' +
+          '<span class="gallery-placeholder">After Photo</span></div></div>';
+      } else {
+        modalImageArea.innerHTML = '<span class="gallery-placeholder">Project Photo</span>';
+      }
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    /* Bind gallery items */
+    document.querySelectorAll('.gallery-item').forEach(function (item) {
+      item.style.cursor = 'pointer';
+      item.addEventListener('click', function () {
+        var overlayEl = item.querySelector('.gallery-item-overlay');
+        var title = overlayEl ? overlayEl.querySelector('h4') : null;
+        var desc = overlayEl ? overlayEl.querySelector('p') : null;
+        openModal({
+          type: 'gallery',
+          title: title ? title.textContent : 'Project',
+          location: desc ? desc.textContent : '',
+          description: 'A completed project by Dutch Painting Services showcasing our commitment to quality craftsmanship and attention to detail.',
+          tags: []
+        });
+      });
+    });
+
+    /* Bind before/after items */
+    document.querySelectorAll('.before-after-item').forEach(function (item) {
+      item.style.cursor = 'pointer';
+      item.addEventListener('click', function () {
+        var infoEl = item.querySelector('.before-after-info');
+        var title = infoEl ? infoEl.querySelector('h4') : null;
+        var desc = infoEl ? infoEl.querySelector('p') : null;
+        var tagEls = infoEl ? infoEl.querySelectorAll('.project-tag') : [];
+        var tags = [];
+        tagEls.forEach(function (t) { tags.push(t.textContent); });
+        openModal({
+          type: 'before-after',
+          title: title ? title.textContent : 'Project',
+          description: desc ? desc.textContent : '',
+          location: '',
+          tags: tags
+        });
+      });
+    });
+  }
+
 });
