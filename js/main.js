@@ -61,8 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
     link.addEventListener('click', function () {
       if (window.innerWidth <= 768) {
         /* Don't close if it's the Services dropdown trigger */
-        if (!link.parentElement.classList.contains('has-dropdown') ||
-            link.getAttribute('href') !== '#') {
+        if (!link.parentElement.classList.contains('has-dropdown')) {
           closeMobileMenu();
         }
       }

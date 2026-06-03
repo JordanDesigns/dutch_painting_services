@@ -2238,10 +2238,19 @@ p {
     visibility: visible;
     transform: none;
     box-shadow: none;
+    min-width: 0;
+    width: 100%;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
     padding: 0;
+  }
+
+  .has-dropdown:hover .dropdown {
+    max-height: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
   }
 
   .has-dropdown.open .dropdown {
