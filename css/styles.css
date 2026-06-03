@@ -2228,8 +2228,12 @@ p {
   }
 
   /* Mobile Dropdown */
+  .has-dropdown > a {
+    justify-content: center;
+  }
+
   .has-dropdown > a::after {
-    margin-left: auto;
+    margin-left: 6px;
   }
 
   .dropdown {
