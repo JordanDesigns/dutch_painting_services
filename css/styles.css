@@ -293,14 +293,29 @@ p {
 /* Logo */
 .logo {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+}
+
+.logo-mark {
+  height: 3.4rem;
+  width: auto;
+  display: block;
+  position: relative;
+  top: 3px;
+}
+
+.logo-text {
+  display: flex;
   flex-direction: column;
   line-height: 1.1;
-  text-decoration: none;
 }
 
 .logo-dutch {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 3.075rem;
   font-weight: 800;
   color: var(--white);
   letter-spacing: 1px;
@@ -309,11 +324,11 @@ p {
 
 .logo-painting {
   font-family: var(--font-heading);
-  font-size: 0.7rem;
+  font-size: 0.765rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 3.3px;
   transition: color var(--transition);
 }
 
@@ -488,6 +503,7 @@ p {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  padding-top: 80px;
   overflow: hidden;
   background: linear-gradient(135deg, #1A1A1A 0%, #2C2C2C 50%, #3D3D3D 100%);
 }
