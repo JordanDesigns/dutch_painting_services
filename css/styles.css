@@ -328,8 +328,13 @@ p {
   font-weight: 600;
   color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
-  letter-spacing: 3.3px;
+  letter-spacing: 3.6px;
   transition: color var(--transition);
+}
+
+/* Nudge "Painting Services" right so the back of the P lines up with the back of the D */
+.site-header .logo-painting {
+  margin-left: 2px;
 }
 
 .site-header.scrolled .logo-dutch {
