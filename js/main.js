@@ -196,6 +196,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  /* ----- Contact Form (Formspree AJAX submit) ----- */
+  var contactForm = document.querySelector('.contact-form');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var submitBtn = contactForm.querySelector('.form-submit');
+      var errorEl = document.getElementById('formError');
+      var successEl = document.getElementById('formSuccess');
+      var originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+
+      if (errorEl) errorEl.hidden = true;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+      }
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (response) {
+        if (response.ok) {
+          contactForm.reset();
+          contactForm.hidden = true;
+          if (successEl) successEl.hidden = false;
+        } else {
+          throw new Error('Submission failed');
+        }
+      }).catch(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHTML;
+        }
+        if (errorEl) errorEl.hidden = false;
+      });
+    });
+  }
+
   /* ----- Smooth scroll for anchor links ----- */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {

@@ -146,10 +146,66 @@
           <h3>Request a Free Quote</h3>
           <p>Fill out the form below and we'll get back to you within one business day.</p>
 
-          <div class="form-placeholder">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-            <h4>Contact Form Coming Soon</h4>
-            <p>The contact form will be integrated here. In the meantime, please reach out by phone or email using the contact details provided.</p>
+          <!-- Formspree: replace YOUR_FORM_ID with your form's endpoint ID from formspree.io -->
+          <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <p class="form-error" id="formError" hidden>Sorry, something went wrong sending your request. Please try again, or reach us by phone or email.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" autocomplete="name" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+              </div>
+              <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" autocomplete="organization">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="project-type">Project Type <span class="required">*</span></label>
+              <select id="project-type" name="project-type" required>
+                <option value="" disabled selected>Select a project type…</option>
+                <optgroup label="Commercial Painting">
+                  <option value="Commercial Painting — Interior">Interior</option>
+                  <option value="Commercial Painting — Exterior">Exterior</option>
+                </optgroup>
+                <optgroup label="Residential Painting">
+                  <option value="Residential Painting — Interior">Interior</option>
+                  <option value="Residential Painting — Exterior">Exterior</option>
+                </optgroup>
+                <option value="Furniture Restoration">Furniture Restoration</option>
+                <option value="Other / Not Sure">Other / Not Sure</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="project-description">Project Description <span class="required">*</span></label>
+              <textarea id="project-description" name="project-description" rows="5" placeholder="Tell us about your project — location, approximate size, timeline, and any details that will help us prepare your quote." required></textarea>
+            </div>
+
+            <!-- Formspree options -->
+            <input type="hidden" name="_subject" value="New Quote Request — Dutch Painting Services">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+
+            <button type="submit" class="btn btn-primary btn-lg form-submit">Send Request
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+
+          <div class="form-success" id="formSuccess" hidden>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <h4>Thank you!</h4>
+            <p>Your request has been sent. We'll get back to you within one business day.</p>
           </div>
         </div>
 
