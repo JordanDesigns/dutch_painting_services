@@ -1124,6 +1124,38 @@ p {
   letter-spacing: 2px;
 }
 
+/* Real project photos filling the gallery tiles, before/after slots and modal */
+.gallery-item > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition);
+}
+
+.gallery-item:hover > img {
+  transform: scale(1.05);
+}
+
+.ba-image > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.ba-image .ba-label {
+  z-index: 2;
+}
+
+.modal-image-area > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Photo slideshow */
 .slideshow {
   position: relative;

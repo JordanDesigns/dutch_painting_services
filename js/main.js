@@ -300,11 +300,19 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (data.type === 'before-after') {
+        var beforeInner = data.beforeImage
+          ? '<img src="' + data.beforeImage + '" alt="Before">'
+          : '<span class="gallery-placeholder">Before Photo</span>';
+        var afterInner = data.afterImage
+          ? '<img src="' + data.afterImage + '" alt="After">'
+          : '<span class="gallery-placeholder">After Photo</span>';
         modalImageArea.innerHTML = '<div class="modal-ba-images">' +
           '<div class="ba-image before"><span class="ba-label">Before</span>' +
-          '<span class="gallery-placeholder">Before Photo</span></div>' +
+          beforeInner + '</div>' +
           '<div class="ba-image after"><span class="ba-label">After</span>' +
-          '<span class="gallery-placeholder">After Photo</span></div></div>';
+          afterInner + '</div></div>';
+      } else if (data.image) {
+        modalImageArea.innerHTML = '<img src="' + data.image + '" alt="' + (data.title || 'Project') + '">';
       } else {
         modalImageArea.innerHTML = '<span class="gallery-placeholder">Project Photo</span>';
       }
@@ -333,10 +341,12 @@ document.addEventListener('DOMContentLoaded', function () {
         var overlayEl = item.querySelector('.gallery-item-overlay');
         var title = overlayEl ? overlayEl.querySelector('h4') : null;
         var desc = overlayEl ? overlayEl.querySelector('p') : null;
+        var galleryImg = item.querySelector('img');
         openModal({
           type: 'gallery',
           title: title ? title.textContent : 'Project',
           location: desc ? desc.textContent : '',
+          image: galleryImg ? galleryImg.getAttribute('src') : '',
           description: 'A completed project by Dutch Painting Services showcasing our commitment to quality craftsmanship and attention to detail.',
           tags: []
         });
@@ -353,11 +363,15 @@ document.addEventListener('DOMContentLoaded', function () {
         var tagEls = infoEl ? infoEl.querySelectorAll('.project-tag') : [];
         var tags = [];
         tagEls.forEach(function (t) { tags.push(t.textContent); });
+        var beforeImg = item.querySelector('.ba-image.before img');
+        var afterImg = item.querySelector('.ba-image.after img');
         openModal({
           type: 'before-after',
           title: title ? title.textContent : 'Project',
           description: desc ? desc.textContent : '',
           location: '',
+          beforeImage: beforeImg ? beforeImg.getAttribute('src') : '',
+          afterImage: afterImg ? afterImg.getAttribute('src') : '',
           tags: tags
         });
       });
