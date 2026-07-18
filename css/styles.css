@@ -477,6 +477,29 @@ p {
   transform: rotate(-45deg) translate(5px, -6px);
 }
 
+/* In-drawer close button (mobile only) */
+.mobile-nav-close {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: var(--bg-light);
+  color: var(--black);
+  border-radius: 50%;
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.mobile-nav-close:hover {
+  background: var(--orange);
+  color: var(--white);
+}
+
 /* Mobile Overlay */
 .mobile-overlay {
   display: none;
@@ -2196,6 +2219,36 @@ p {
   padding-left: 4px;
 }
 
+.footer-socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+  transition: all var(--transition);
+}
+
+.social-link:hover {
+  background: var(--orange);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
 .footer-logo {
   display: flex;
   flex-direction: column;
@@ -2381,6 +2434,20 @@ p {
 
   .main-nav.open {
     right: 0;
+  }
+
+  .mobile-nav-close {
+    display: flex;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+  }
+
+  /* Hide the hamburger while the drawer is open — the close button takes over */
+  .mobile-menu-toggle.active {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 
   .mobile-overlay {
