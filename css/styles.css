@@ -802,12 +802,23 @@ p {
 
 .service-card-image {
   height: 220px;
-  background: linear-gradient(135deg, #E8E8E8 0%, #D0D0D0 100%);
+  background: linear-gradient(135deg, var(--orange-light) 0%, #FFE7D2 100%);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.service-card-image .service-card-icon {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  transition: transform var(--transition);
+}
+
+.service-card:hover .service-card-image .service-card-icon {
+  transform: scale(1.06);
 }
 
 .service-card-image .placeholder-text {
@@ -879,10 +890,21 @@ p {
 .service-card-detailed .card-image {
   height: 100%;
   min-height: 280px;
-  background: linear-gradient(135deg, #E8E8E8 0%, #D0D0D0 100%);
+  background: linear-gradient(135deg, var(--orange-light) 0%, #FFE7D2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.service-card-detailed .card-image .service-card-icon {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  transition: transform var(--transition);
+}
+
+.service-card-detailed:hover .card-image .service-card-icon {
+  transform: scale(1.05);
 }
 
 .service-card-detailed .card-body {
