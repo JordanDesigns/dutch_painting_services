@@ -511,11 +511,13 @@ p {
   background: rgba(0, 0, 0, 0.5);
   z-index: 998;
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--transition);
 }
 
 .mobile-overlay.active {
   opacity: 1;
+  pointer-events: auto;
 }
 
 /* Inner-page header (non-homepage) */
@@ -2459,7 +2461,8 @@ p {
     gap: 0;
   }
 
-  .main-nav > ul > li > a {
+  .main-nav > ul > li > a,
+  .site-header.scrolled .main-nav > ul > li > a {
     color: var(--black);
     padding: 14px 0;
     font-size: 1rem;
@@ -2467,7 +2470,9 @@ p {
   }
 
   .main-nav > ul > li > a:hover,
-  .main-nav > ul > li > a.active {
+  .main-nav > ul > li > a.active,
+  .site-header.scrolled .main-nav > ul > li > a:hover,
+  .site-header.scrolled .main-nav > ul > li > a.active {
     color: var(--orange);
   }
 
