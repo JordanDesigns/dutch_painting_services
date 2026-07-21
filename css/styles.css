@@ -2378,6 +2378,14 @@ p {
   .hero-visual {
     max-width: 560px;
     margin: 0 auto;
+    min-height: 0;
+  }
+
+  /* On mobile let the image flow naturally so it always renders
+     (absolute fill is only needed on desktop to stop it ballooning) */
+  .hero-photo {
+    position: static;
+    height: auto;
   }
 
   /* Keep hero image visible on mobile regardless of scroll-reveal */
@@ -2547,7 +2555,7 @@ p {
   }
 
   .hero-visual {
-    min-height: 340px;
+    min-height: 0;
   }
 
   .hero-text {
