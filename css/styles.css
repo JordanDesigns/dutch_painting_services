@@ -1935,6 +1935,10 @@ p {
 /* ============================================================
    CONTACT PAGE
    ============================================================ */
+.contact-section {
+  padding-top: 40px;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr;
