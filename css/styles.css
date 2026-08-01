@@ -1937,9 +1937,12 @@ p {
    ============================================================ */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 60px;
+  grid-template-columns: 1fr;
+  gap: 40px;
 }
+
+.contact-form-section { order: 1; }
+.contact-info-card { order: 2; }
 
 .contact-info-card {
   background: var(--black);
@@ -2029,6 +2032,26 @@ p {
 .contact-socials h4 {
   color: var(--white);
   margin-bottom: 16px;
+}
+
+/* Landscape row of contact details under the intro */
+.contact-details-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+  margin-top: 8px;
+}
+
+.contact-details-row .contact-detail {
+  margin-bottom: 0;
+  flex: 1 1 220px;
+}
+
+.contact-details-row .contact-socials {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+  flex: 1 1 220px;
 }
 
 .hours-row {
@@ -2155,26 +2178,6 @@ p {
 .form-success p {
   color: var(--medium-gray);
   margin-bottom: 0;
-}
-
-/* Map Placeholder */
-.map-placeholder {
-  width: 100%;
-  height: 400px;
-  background: linear-gradient(135deg, #E8E8E8 0%, #D5D5D5 100%);
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 60px;
-}
-
-.map-placeholder span {
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  color: var(--light-gray);
-  text-transform: uppercase;
-  letter-spacing: 2px;
 }
 
 /* ============================================================
@@ -2728,11 +2731,6 @@ p {
   .contact-form-section { padding: 30px; }
 
   .contact-form .form-row { grid-template-columns: 1fr; gap: 0; }
-
-  .map-placeholder {
-    height: 250px;
-    margin-top: 40px;
-  }
 
   /* CTA Banner */
   .cta-banner { padding: 60px 0; }
