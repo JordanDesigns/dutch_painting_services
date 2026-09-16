@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function () {
       item.style.cursor = 'pointer';
       item.addEventListener('click', function () {
         var overlayEl = item.querySelector('.gallery-item-overlay');
-        var title = overlayEl ? overlayEl.querySelector('h4') : null;
+        var title = overlayEl ? overlayEl.querySelector('h1, h2, h3, h4, h5, h6') : null;
         var desc = overlayEl ? overlayEl.querySelector('p') : null;
         var galleryImg = item.querySelector('img');
         openModal({
@@ -385,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function () {
       item.style.cursor = 'pointer';
       item.addEventListener('click', function () {
         var infoEl = item.querySelector('.before-after-info');
-        var title = infoEl ? infoEl.querySelector('h4') : null;
+        var title = infoEl ? infoEl.querySelector('h1, h2, h3, h4, h5, h6') : null;
         var desc = infoEl ? infoEl.querySelector('p') : null;
         var tagEls = infoEl ? infoEl.querySelectorAll('.project-tag') : [];
         var tags = [];

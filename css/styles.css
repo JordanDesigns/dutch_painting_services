@@ -944,7 +944,7 @@ p {
   justify-content: center;
 }
 
-.service-card-detailed .card-body h3 {
+.service-card-detailed .card-body h2 {
   font-size: 1.75rem;
   margin-bottom: 16px;
 }
@@ -1183,7 +1183,7 @@ p {
   transform: translateY(0);
 }
 
-.gallery-item-overlay h4 {
+.gallery-item-overlay h3 {
   color: var(--white);
   font-size: 1rem;
   margin-bottom: 4px;
@@ -1377,7 +1377,9 @@ p {
   padding: 24px;
 }
 
-.before-after-info h4 {
+.before-after-info h3 {
+  /* pinned: these were h4 before, keep the same size */
+  font-size: 1.25rem;
   margin-bottom: 8px;
 }
 
@@ -1489,7 +1491,9 @@ p {
   fill: var(--orange);
 }
 
-.scope-item h4 {
+.scope-item h3 {
+  /* pinned: these were h4 before, keep the same size */
+  font-size: 1.25rem;
   margin-bottom: 10px;
 }
 
@@ -2041,7 +2045,7 @@ a.client-logo {
   color: var(--white);
 }
 
-.contact-info-card h3 {
+.contact-info-card h2 {
   color: var(--white);
   font-size: 1.5rem;
   margin-bottom: 8px;
@@ -2080,7 +2084,7 @@ a.client-logo {
   fill: var(--orange);
 }
 
-.contact-detail-text h4 {
+.contact-detail-text h3 {
   color: var(--white);
   font-size: 1rem;
   margin-bottom: 4px;
@@ -2169,7 +2173,7 @@ a.client-logo {
   border: 1px solid var(--border-gray);
 }
 
-.contact-form-section h3 {
+.contact-form-section h2 {
   font-size: 1.5rem;
   margin-bottom: 8px;
 }
@@ -2260,7 +2264,7 @@ a.client-logo {
   margin-bottom: 16px;
 }
 
-.form-success h4 {
+.form-success h3 {
   font-size: 1.35rem;
   margin-bottom: 8px;
 }
@@ -2878,7 +2882,7 @@ body {
     padding: 24px;
   }
 
-  .service-card-detailed .card-body h3 {
+  .service-card-detailed .card-body h2 {
     font-size: 1.35rem;
   }
 }
