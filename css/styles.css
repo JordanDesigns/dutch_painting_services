@@ -1674,14 +1674,15 @@ a.client-logo {
   overflow: hidden;
 }
 
-/* Headshots fill the square box identically no matter what size or ratio
-   the source file is. The crop sits above centre so faces stay in frame. */
+/* Headshots are pre-cropped to matching 800x800 squares, so they drop into
+   the square card box at identical size and framing. cover + centre keeps
+   that true if a future photo arrives at a different ratio. */
 .team-photo img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 20%;
+  object-position: center;
 }
 
 .placeholder-text {
