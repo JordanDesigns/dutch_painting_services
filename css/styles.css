@@ -1110,24 +1110,44 @@ p {
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 24px;
+  gap: 2px;
+  margin-top: 16px;
 }
 
+/* The dot stays 10px visually, but the button itself is 24px square so it
+   can actually be tapped on a phone. The dot is drawn with an inset shadow
+   so the extra area stays invisible. */
 .slider-dot {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slider-dot::before {
+  content: '';
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: var(--border-gray);
-  cursor: pointer;
   transition: all var(--transition);
-  border: none;
-  padding: 0;
 }
 
-.slider-dot.active {
+.slider-dot.active::before {
   background: var(--orange);
   transform: scale(1.2);
+}
+
+.slider-dot:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
 }
 
 /* ============================================================
@@ -2390,6 +2410,23 @@ a.client-logo {
 /* ============================================================
    SCROLL REVEAL ANIMATIONS
    ============================================================ */
+/* .reveal-left / .reveal-right sit offset by 30px until they scroll into
+   view. On narrow screens the container is edge-to-edge, so that offset
+   pushed elements past the right edge and gave the page a sideways scroll.
+   Clip it: `clip` contains the overflow without making body a scroll
+   container (which `hidden` would, breaking any future sticky element). */
+html,
+body {
+  overflow-x: hidden;
+}
+
+@supports (overflow-x: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(30px);
