@@ -1,0 +1,7 @@
+# robots.txt for Dutch Painting Services
+# Everything on this site is public and crawlable.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://dutchpaintingservices.com/sitemap.xml
