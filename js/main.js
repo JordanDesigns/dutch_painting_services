@@ -263,6 +263,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ----- "How did you hear about us?" — reveal a box when Other is picked ----- */
+  var howHeard = document.getElementById('how-heard');
+  var howHeardOtherGroup = document.getElementById('howHeardOtherGroup');
+  var howHeardOther = document.getElementById('how-heard-other');
+
+  if (howHeard && howHeardOtherGroup && howHeardOther) {
+    function syncHowHeardOther(focusWhenShown) {
+      var isOther = howHeard.value === 'Other';
+      howHeardOtherGroup.hidden = !isOther;
+      if (!isOther) {
+        // Drop anything typed before, so a stale answer is never submitted.
+        howHeardOther.value = '';
+      } else if (focusWhenShown) {
+        howHeardOther.focus();
+      }
+    }
+
+    howHeard.addEventListener('change', function () {
+      syncHowHeardOther(true);
+    });
+
+    // A back-navigation can restore "Other"; show the box, but don't grab focus.
+    syncHowHeardOther(false);
+  }
+
   /* ----- Smooth scroll for anchor links ----- */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
